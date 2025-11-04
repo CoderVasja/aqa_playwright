@@ -1,12 +1,15 @@
 import { test, expect } from '@playwright/test';
-import { RegisterPage } from './RegisterPage';
 
+import {HomePage} from '../../homework_25/pages/HomePage';
+import { RegisterPage } from '../../homework_25/pages/RegisterPage';
 
 test('Positive sign up', async ({ page }) => {
+  const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
-  await registerPage.goto();
+ 
+  await homePage.goto();
 
-  await registerPage.signUpButton.click();
+  await homePage.signUpButton.click();
   await registerPage.fillForm('John', 'Doe', 'john.doe@example.com', 'Password123!', 'Password123!');
   await registerPage.registerButton.click();
 
@@ -14,12 +17,11 @@ test('Positive sign up', async ({ page }) => {
 });
 
 test('Negative sign up (empty name field)', async ({ page }) => {
+  const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
-  await registerPage.goto();
+  await homePage.goto();
 
-
-
-  await registerPage.signUpButton.click();
+  await homePage.signUpButton.click();
   await expect(page.getByRole('heading', { name: 'Registration' })).toBeVisible();
 
 
@@ -32,11 +34,12 @@ test('Negative sign up (empty name field)', async ({ page }) => {
 
 
 test('Negative sign up (Passwords do not match)', async ({ page }) => {
+  const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
 
-  await registerPage.goto();
+  await homePage.goto();
 
-  await registerPage.signUpButton.click();
+  await homePage.signUpButton.click();
   await expect(page.getByRole('heading', { name: 'Registration' })).toBeVisible();
 
 
@@ -53,11 +56,12 @@ test('Negative sign up (Passwords do not match)', async ({ page }) => {
 
 
 test('Negative sign up (Invalid email)', async ({ page }) => {
+  const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
 
-  await registerPage.goto();
+  await homePage.goto();
 
-  await registerPage.signUpButton.click();
+  await homePage.signUpButton.click();
   await expect(page.getByRole('heading', { name: 'Registration' })).toBeVisible();
 
   await registerPage.fillForm('John', 'Doe', 'john', 'Password123!', 'Password123!');
@@ -72,11 +76,12 @@ test('Negative sign up (Invalid email)', async ({ page }) => {
 });
 
 test('Negative sign up (Invalid Name)', async ({ page }) => {
+  const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
 
-  await registerPage.goto();
+  await homePage.goto();
 
-  await registerPage.signUpButton.click();
+  await homePage.signUpButton.click();
   await expect(page.getByRole('heading', { name: 'Registration' })).toBeVisible();
 
  await registerPage.fillForm('J', 'Doe');
