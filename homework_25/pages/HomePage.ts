@@ -14,4 +14,8 @@ export class HomePage {
  async goto() {
   await this.page.goto('https://guest:welcome2qauto@qauto.forstudy.space/');
 }
+
+async signUpButtonClick(){
+  this.signUpButton.click()
+};
 }

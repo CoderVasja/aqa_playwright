@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 import {HomePage} from '../../homework_25/pages/HomePage';
 import { RegisterPage } from '../../homework_25/pages/RegisterPage';
 
-test('Positive sign up', async ({ page }) => {
+test.only('Positive sign up', async ({ page }) => {
   const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
  
   await homePage.goto();
 
-  await homePage.signUpButton.click();
+  await homePage.signUpButtonClick();
   await registerPage.fillForm('John', 'Doe', 'john.doe@example.com', 'Password123!', 'Password123!');
   await registerPage.registerButton.click();
 
@@ -62,7 +62,11 @@ test('Negative sign up (Invalid email)', async ({ page }) => {
   await homePage.goto();
 
   await homePage.signUpButton.click();
+
   await expect(page.getByRole('heading', { name: 'Registration' })).toBeVisible();
+
+
+
 
   await registerPage.fillForm('John', 'Doe', 'john', 'Password123!', 'Password123!');
 
