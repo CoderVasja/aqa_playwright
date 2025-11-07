@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import {HomePage} from '../../homework_25/pages/HomePage';
 import { RegisterPage } from '../../homework_25/pages/RegisterPage';
 
-test.only('Positive sign up', async ({ page }) => {
+test('Positive sign up', async ({ page }) => {
   const homePage = new HomePage(page);
   const registerPage = new RegisterPage(page);
  
