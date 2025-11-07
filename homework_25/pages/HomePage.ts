@@ -12,7 +12,7 @@ export class HomePage {
 
  }
  async goto() {
-  await this.page.goto('https://guest:welcome2qauto@qauto.forstudy.space/');
+  await this.page.goto('/');
 }
 
 async signUpButtonClick(){
