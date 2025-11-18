@@ -18,17 +18,17 @@ export default defineConfig({
 
   projects: [
     {
+      name: 'setup',
+      testMatch: /.*\.setup\.ts$/,    // Наприклад tests/login.setup.ts
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      dependencies: ['setup'],
+      use: { 
+        ...devices['Desktop Chrome'],
+        storageState: 'storageState.json',
+      },
+    }
     // Можна додати мобільні або інші конфіги, якщо потрібно
   ],
 
