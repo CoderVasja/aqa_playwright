@@ -12,7 +12,7 @@ export class HomePage {
 
  }
  async goto() {
-  await this.page.goto('/'); //BASE UL IN .env
+  await this.page.goto('/'); //BASE ULR IN .env
 }
 
 async signUpButtonClick(){
