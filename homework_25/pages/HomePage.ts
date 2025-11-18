@@ -11,8 +11,8 @@ export class HomePage {
    
 
  }
- async goto() {
-  await this.page.goto('/'); //BASE ULR IN .env
+ async goto(path: string = '/') {
+  await this.page.goto(path); //BASE ULR IN .env
 }
 
 async signUpButtonClick(){
